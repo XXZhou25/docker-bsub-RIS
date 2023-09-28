@@ -24,6 +24,7 @@ In general, there are two ways to build a custom docker image.
      bsub -G compute-yeli -q general-interactive -Is -a 'docker_build(xxzhou25/basenji:1.0)' -- -f test --tag xxzhou25/basenji:1.0  .
      ```
      RIS recommends building Docker images on a workstation or other computer you have local access to as it makes debugging the build process easier. However, some build processes may require more resources than you have available locally. For these situations, the compute cluster can be used.
+     More information: https://docs.ris.wustl.edu/doc/compute/recipes/docker-on-compute.html#docker-on-compute
 ## Example: building a docker image interactively
 This way is what I recommend most, easy to debug, install packages one by one. 
 For example, I want to build a docker image including both tensorflow(with cuda, cudnn for GPU support), Anaconda, some packages Basenji project required.
