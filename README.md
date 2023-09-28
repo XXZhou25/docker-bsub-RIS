@@ -58,4 +58,5 @@ conda install pip
 conda install ......
 pip install ......
 ```
-Again, please be very careful about the path, 
+Again, please be very careful about the path to the packages in base image, path to your conda environment, python, pip, since you would want your python/pip can find packages installed in other path. 
+
