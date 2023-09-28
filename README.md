@@ -23,8 +23,8 @@ In general, there are two ways to build a custom docker image.
      cd /path/test 
      bsub -G compute-yeli -q general-interactive -Is -a 'docker_build(xxzhou25/basenji:1.0)' -- -f test --tag xxzhou25/basenji:1.0  .
      ```
-## Example for building a docker image interactively
-This way is what I usually do, easy to debug, install packages one by one. 
+## Example: building a docker image interactively
+This way is what I recommend most, easy to debug, install packages one by one. 
 For example, I want to build a docker image including both tensorflow(with cuda, cudnn for GPU support), Anaconda, some packages Basenji project required.
 Since Basenji project required tensorflow version 2.8.0 which can run on GPU, it will require correct version of cuda, cudnn, has GPU as a root user(so that cuda can be successfully installed). I don't have GPU locally, and RIS doesn't allow running GPU as a root user, so finally, I choose to use tensorflow 2.8.0 as the base image, and install everything. The whole process is finished on my laptop. 
 ```
