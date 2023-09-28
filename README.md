@@ -1,4 +1,4 @@
-## Ways to build a docker image
+## Building a Custom Docker Image
 In general, there are two ways to build a custom docker image.
 1. Interactive approach
    by entering the docker image as a root user, then install everything within it. 
@@ -27,17 +27,18 @@ In general, there are two ways to build a custom docker image.
      Note:  
      RIS recommends building Docker images on a workstation or other computer you have local access to as it makes debugging the build process easier. However, some build processes may require more resources than you have available locally. For these situations, the compute cluster can be used.  
      See: https://docs.ris.wustl.edu/doc/compute/recipes/docker-on-compute.html#docker-on-compute
-## Example: building a docker image interactively
-This way is what I recommend most, easy to debug, install packages one by one. 
-For example, I want to build a docker image including both tensorflow(with cuda, cudnn for GPU support), Anaconda, some packages Basenji project required.
-Since Basenji project required tensorflow version 2.8.0 which can run on GPU, it will require correct version of cuda, cudnn, has GPU as a root user(so that cuda can be successfully installed). I don't have GPU locally, and RIS doesn't allow running GPU as a root user, so finally, I choose to use tensorflow 2.8.0 as the base image, and install everything. The whole process is finished on my laptop. 
+## Example: Building a docker image interactively
+This is the recommended method for ease of debugging and installing packages individually.  
+  
+Let's say we want to create a Docker image that includes TensorFlow (with CUDA and cuDNN for GPU support), Anaconda, and various packages required for the Basenji project. Since the Basenji project specifically requires TensorFlow version 2.8.0 with GPU support, we need the correct versions of CUDA and cuDNN, as well as GPU access as a root user (for successful CUDA installation).  
+However, I don't have GPU access on my local machine, and RIS doesn't permit GPU access as a root user. Therefore, I chose to use TensorFlow 2.8.0 as the base image and manually install everything. The entire process takes place on my laptop.
 ```
 docker pull tensorflow/tensorflow:2.8.0-gpu-jupyter
 docker run -itd tensorflow/tensorflow:2.8.0-gpu-jupyter /bin/bash
 docker ps (showing 'container id' of docker images that are currently running, assuming 9e22d5b18f62 is its id)
 docker exec -it 9e22d5b18f62 /bin/bash
 ```
-After ```docker exec```, we successfully going into the docker as a root user, it usually will show ```root@9e22d5b18f62:/```.
+After ```docker exec```, we successfully enter the Docker container as a root user, typically indicated by the prompt ```root@CONTAINER_ID:/```(in this case, ```root@9e22d5b18f62:/```).
 We should be very careful about the path to the tensorflow, especially if we want to build another conda environment, we should add tensorflow's path to it: 
 ```
 dpkg -l
