@@ -31,6 +31,7 @@ In general, there are two ways to build a custom docker image.
 This is the recommended method for ease of debugging and installing packages individually.  
   
 Let's say we want to create a Docker image that includes TensorFlow (with CUDA and cuDNN for GPU support), Anaconda, and various packages required for the Basenji project. Since the Basenji project specifically requires TensorFlow version 2.8.0 with GPU support, we need the correct versions of CUDA and cuDNN, as well as GPU access as a root user (for successful CUDA installation).  
+  
 However, I don't have GPU access on my local machine, and RIS doesn't permit GPU access as a root user. Therefore, I chose to use TensorFlow 2.8.0 as the base image and manually install everything. The entire process takes place on my laptop.
 ```
 docker pull tensorflow/tensorflow:2.8.0-gpu-jupyter
