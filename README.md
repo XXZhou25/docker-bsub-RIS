@@ -63,7 +63,7 @@ docker push xxzhou25/basenji:1.0
 ```
 This process allows you to create a Docker image with all the required components for your project.  
 
-Please be very careful about the path to the TensorFlow, especially if we plan to create a conda environment, we should add TensorFlow's path to it.  
+Please be very careful about the path to the TensorFlow, especially if we plan to create a conda environment, we should add TensorFlow's path to it to let your python be able to find it.  
 Some useful commands: 
 ```
 dpkg -l
