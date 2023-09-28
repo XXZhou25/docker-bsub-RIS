@@ -60,6 +60,8 @@ conda install pip
 conda install ......
 pip install ......
 ```
+Please be very careful about the path where Anaconda installed, don't use /root/Anaconda. If /root used, when you use this docker image in non-interactive way, you will not be able to source conda, since you won't have permission to source /root. 
+
 Again, please be very careful about the path if you create your own environment, like the path to the packages in base image, path to your conda environment, python, pip, since you would want your python/pip can find packages installed in other path. 
 
 After everything installed, exit the docker image by ```exit```. Push this docker image to the docker hub by: 
