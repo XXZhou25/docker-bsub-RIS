@@ -1,11 +1,12 @@
 ## Ways to build a docker image
-In general, there are two ways to build a custom docker image. 
-1. interactive way, by going into the docker image as a root user, then install everything in it. 
+In general, there are two ways to build a custom docker image.
+###Interactive approach
+   going into the docker image as a root user, then install everything in it. 
    - Install Docker engine https://docs.docker.com/engine/install/
    - register your account on Docker hub
    - Then you will be able to run docker in command line, and do everything
    - You can do this locally(on your own laptop), but cannot do it on RIS Compute. 
-2. non-interactive way, by constructing a Dockerfile, to build the docker
+3. non-interactive way, by constructing a Dockerfile, to build the docker
    - Can do locally and RIS Compute
    - local（I haven't tried it locally, please see more from Docker documentation）:
      ```
