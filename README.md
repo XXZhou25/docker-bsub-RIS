@@ -66,5 +66,5 @@ docker commit 9e22d5b18f62 xxzhou25/basenji:1.0
 docker tag xxzhou25/basenji:1.0 xxzhou25/basenji:1.0
 docker push xxzhou25/basenji:1.0
 ```
-
+## Example: use your docker image in RIS Compute node
 
