@@ -46,14 +46,6 @@ pip install cython
 pip install seaborn
 pip install ......
 ```
-(Note: Please be very careful about the path to the tensorflow, especially if we plan to create a conda environment, we should add tensorflow's path to it)  
-Some useful commands: 
-```
-dpkg -l
-pip list
-which python
-echo $PATH
-```
 If you wish to install Anaconda, you can use these commands:
 ```
 apt-get update 
@@ -62,14 +54,23 @@ wget https://repo.anaconda.com/archive/Anaconda3-2023.07-2-Linux-x86_64.sh
 bash Anaconda3-2023.07-2-Linux-x86_64.sh
 source .bashrc
 ```
-**Please be very careful about the installation path of Anaconda. Avoid using "/root/Anaconda" as the path, as it may lead to issues when using this Docker image non-interactively, as you won't have permission to source "/root".**
+**Please be very careful about the installation path of Anaconda. Avoid using "/root/Anaconda" as the path, as it may lead to issues when using this Docker image non-interactively, as you won't have permission to source "/root".**  
 After everything installed, exit the docker image by ```exit```. Commit your changes and push it to your docker hub by: 
 ```
 docker commit 9e22d5b18f62 xxzhou25/basenji:1.0
 docker tag xxzhou25/basenji:1.0 xxzhou25/basenji:1.0
 docker push xxzhou25/basenji:1.0
 ```
-This process allows you to create a Docker image with all the required components for your project.
+This process allows you to create a Docker image with all the required components for your project.  
+
+Please be very careful about the path to the TensorFlow, especially if we plan to create a conda environment, we should add TensorFlow's path to it.  
+Some useful commands: 
+```
+dpkg -l
+pip list
+which python
+echo $PATH
+```
 ## Example: submit a Bsub job which executing the scripts you want on your docker image, and running on GPU
 From RIS Manual, https://docs.ris.wustl.edu/doc/compute/recipes/job-execution-examples.html?highlight=nvidiaa100_sxm4_40gb#gpu-resources
 There are three types of GPU in general queue:
