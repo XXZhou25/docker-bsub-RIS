@@ -108,7 +108,6 @@ Then, create a bsub job file, eg: train.bsub
 ### will consume 2GB of RAM, 1GB of local temp disk (-R ‘rusage[mem=2GB, tmp=1GB]’)
 ### will span only a single host (-R ‘span[hosts=1]’)
 
-export PATH="/opt/conda/condabin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 python -c "import tensorflow as tf; print(\"Num GPUs Available: \", len(tf.config.list_physical_devices('GPU')))"
 
 cd /storage1/fs1/yeli/Active/xiaoxiao.zhou/projects/basenji/
@@ -116,4 +115,30 @@ python setup.py develop --no-deps --user
 
 cd /storage1/fs1/yeli/Active/xiaoxiao.zhou/projects/basenji/tutorials
 python ../bin/basenji_train.py models/params_small.json data/heart_l131k -o models/heart
+```
+If you want to activate your conda environment, please add those commands in train.bsub:
+```
+export PATH=/opt/conda/bin:$PATH
+. /opt/conda/etc/profile.d/conda.sh
+conda activate /opt/conda/envs/basenji
+```
+Again, please be very careful about the $PATH, since we want our python can find the packages we want to use. 
+Sometimes, you could possibly solve it by something like adding path to environment variable, or changing code by adding: 
+```
+import sys
+sys.path.append('')
+```
+After constructing the .bsub file, submitting the bsub job by
+```
+bsub < train.bsub
+```
+You will receive an email once the job is finished. 
+It will tell you where the output saved, eg: 
+```
+Output is larger than limit of 10 KB set by administrator.
+Output will be saved at /home/xiaoxiao.z/.lsbatch/1695845435.380425.out.
+```
+then you can check the output by: 
+```
+cat /home/xiaoxiao.z/.lsbatch/1695845435.380425.out
 ```
