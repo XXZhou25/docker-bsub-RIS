@@ -1,19 +1,19 @@
 ## Ways to build a docker image
 In general, there are two ways to build a custom docker image.
-### Interactive approach
+1. Interactive approach
    by entering the docker image as a root user, then install everything within it. 
-   - Install Docker engine https://docs.docker.com/engine/install/
-   - register your account on Docker hub
-   - Then you will be able to run docker in command line, and do everything
-   - You can do this locally(on your own laptop), but cannot do it on RIS Compute. 
-3. non-interactive way, by constructing a Dockerfile, to build the docker
-   - Can do locally and RIS Compute
-   - local（I haven't tried it locally, please see more from Docker documentation）:
+   - Install Docker engine, see https://docs.docker.com/engine/install/
+   - Once Docker is set up, you can use it via the command line for various tasks.
+2. Non-interactive approach
+   by writing a Dockerfile, to build the docker.
+   - This approach can be performed both locally and on RIS Compute.
+   - On local device, after creating your own Dockerfile, run something like:
      ```
      cd /path/dockerfile 
      docker build -f dockerfile .
      ```
-   - RIS Compute LSF(https://docs.ris.wustl.edu/doc/compute/recipes/docker-on-compute.html?highlight=docker_build):
+     (Note: I haven't tried this locally; please refer to Docker documentation for more accurate details/commands)
+   - RIS docker_build LSF(see https://docs.ris.wustl.edu/doc/compute/recipes/docker-on-compute.html?highlight=docker_build):
      Assuming I want to build a docker image given a Dockerfile, push it to my docker hub xxzhou25, its name is basenji, its version is 1.0, then the command line for it will be
      ```
      cd /path/Dockerfile 
