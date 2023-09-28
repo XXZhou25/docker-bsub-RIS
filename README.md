@@ -34,11 +34,28 @@ docker ps (showing 'container id' of docker images that are currently running, a
 docker exec -it 9e22d5b18f62 /bin/bash
 ```
 After ```docker exec```, we successfully going into the docker as a root user, it usually will show ```root@9e22d5b18f62:/```.
-Looking for what installed: 
+We should be very careful about the path to the tensorflow, especially if we want to build another conda environment, we should add tensorflow's path to it: 
 ```
 dpkg -l
-pip list 
+pip list
+which python
 echo $PATH
 ```
-
-Manually install Basenji's dependencies based on environment.yml
+Then I manually install packages required by basenji: 
+```
+pip install cython
+pip install seaborn
+...
+```
+If you want to install anaconda
+```
+apt-get update 
+apt-get install wget
+wget https://repo.anaconda.com/archive/Anaconda3-2023.07-2-Linux-x86_64.sh
+bash Anaconda3-2023.07-2-Linux-x86_64.sh
+source .bashrc
+conda install pip
+conda install ......
+pip install ......
+```
+Again, please be very careful about the path, 
