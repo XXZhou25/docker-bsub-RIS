@@ -83,6 +83,7 @@ there are three types of GPU in the general queue:
   - NVIDIAA100_SXM4_40GB
 - Single Precision
    - NVIDIAA40
+  
 You can choose the GPU that best suits your job requirements.  
 Next, you'll need to create a Bsub job file. For example, let's name it "train.bsub"
 ```
