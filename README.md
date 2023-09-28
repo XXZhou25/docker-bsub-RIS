@@ -9,23 +9,24 @@ In general, there are two ways to build a custom docker image.
    - This approach can be performed both locally and on RIS Compute.
    - On local device, after creating your own Dockerfile, run something like:
      ```
-     cd /path/dockerfile 
+     cd /path/to/Dockerfile  
      docker build -f dockerfile .
      ```
      (Note: I haven't tried this locally; please refer to Docker documentation for more accurate details/commands)
    - RIS docker_build LSF(see https://docs.ris.wustl.edu/doc/compute/recipes/docker-on-compute.html?highlight=docker_build):
-     Assuming I want to build a docker image given a Dockerfile, push it to my docker hub xxzhou25, its name is basenji, its version is 1.0, then the command line for it will be
+     Assuming I want to build a docker image from a Dockerfile and push it to my Docker Hub repository xxzhou25, with the name 'basenji', and version '1.0', use the following commands
      ```
-     cd /path/Dockerfile 
+     cd /path/to/Dockerfile 
      bsub -G compute-yeli -q general-interactive -Is -a 'docker_build(xxzhou25/basenji:1.0)' -- --tag xxzhou25/basenji:1.0  .
      ```
-     If the file doesn't name Dockerfile, for example named test, then:
+     If the Dockerfile has a different name (e.g., "test"), you can specify it as follows:
      ```
      cd /path/test 
      bsub -G compute-yeli -q general-interactive -Is -a 'docker_build(xxzhou25/basenji:1.0)' -- -f test --tag xxzhou25/basenji:1.0  .
      ```
-     RIS recommends building Docker images on a workstation or other computer you have local access to as it makes debugging the build process easier. However, some build processes may require more resources than you have available locally. For these situations, the compute cluster can be used.
-     More information: https://docs.ris.wustl.edu/doc/compute/recipes/docker-on-compute.html#docker-on-compute
+     Note:  
+     RIS recommends building Docker images on a workstation or other computer you have local access to as it makes debugging the build process easier. However, some build processes may require more resources than you have available locally. For these situations, the compute cluster can be used.  
+     See: https://docs.ris.wustl.edu/doc/compute/recipes/docker-on-compute.html#docker-on-compute
 ## Example: building a docker image interactively
 This way is what I recommend most, easy to debug, install packages one by one. 
 For example, I want to build a docker image including both tensorflow(with cuda, cudnn for GPU support), Anaconda, some packages Basenji project required.
