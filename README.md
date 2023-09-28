@@ -71,16 +71,16 @@ pip list
 which python
 echo $PATH
 ```
-## Example: submit a Bsub job which executing the scripts you want on your docker image, and running on GPU
+## Example: Submitting a Bsub Job to Execute Scripts in Your Docker Image on a GPU
 From RIS Manual, https://docs.ris.wustl.edu/doc/compute/recipes/job-execution-examples.html?highlight=nvidiaa100_sxm4_40gb#gpu-resources
-There are three types of GPU in general queue:
+there are three types of GPU in the general queue:
 - Double Precision
   - TeslaV100_SXM2_32GB
   - NVIDIAA100_SXM4_40GB
 - Single Precision
    - NVIDIAA40
-Choose whichever GPU you want your job runs on. 
-Then, create a bsub job file, eg: train.bsub
+You can choose the GPU that best suits your job requirements.  
+Next, you'll need to create a Bsub job file. For example, let's name it "train.bsub"
 ```
 #!/bin/bash
 
@@ -119,29 +119,23 @@ python setup.py develop --no-deps --user
 cd /storage1/fs1/yeli/Active/xiaoxiao.zhou/projects/basenji/tutorials
 python ../bin/basenji_train.py models/params_small.json data/heart_l131k -o models/heart
 ```
-If you want to activate your conda environment, please add those commands in train.bsub:
+If you want to activate your conda environment, please pull your docker image, find the path where Conda and your conda environment is installed, and add some commands like below (in my case, my conda locates in /opt):
 ```
 export PATH=/opt/conda/bin:$PATH
 . /opt/conda/etc/profile.d/conda.sh
 conda activate /opt/conda/envs/basenji
 ```
-Again, please be very careful about the $PATH, since we want our python can find the packages we want to use. 
-Sometimes, you could possibly solve it by something like adding path to environment variable, or changing code by adding: 
-```
-import sys
-sys.path.append('')
-```
-After constructing the .bsub file, submitting the bsub job by
+After creating the .bsub file, submitting the bsub job by
 ```
 bsub < train.bsub
 ```
-You will receive an email once the job is finished. 
-It will tell you where the output saved, eg: 
+You will receive an email once the job is finished.  
+This email will specify the location where the job's output has been saved, for example:
 ```
 Output is larger than limit of 10 KB set by administrator.
 Output will be saved at /home/xiaoxiao.z/.lsbatch/1695845435.380425.out.
 ```
-then you can check the output by: 
+To review the job's output, you can use the following command:
 ```
 cat /home/xiaoxiao.z/.lsbatch/1695845435.380425.out
 ```
