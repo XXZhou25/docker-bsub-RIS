@@ -1,7 +1,7 @@
 ## Ways to build a docker image
 In general, there are two ways to build a custom docker image.
-###Interactive approach
-   going into the docker image as a root user, then install everything in it. 
+### Interactive approach
+   by entering the docker image as a root user, then install everything within it. 
    - Install Docker engine https://docs.docker.com/engine/install/
    - register your account on Docker hub
    - Then you will be able to run docker in command line, and do everything
