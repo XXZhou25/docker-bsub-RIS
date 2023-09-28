@@ -45,7 +45,7 @@ Then I manually install packages required by basenji:
 ```
 pip install cython
 pip install seaborn
-...
+pip install ......
 ```
 If you want to install anaconda
 ```
@@ -58,5 +58,13 @@ conda install pip
 conda install ......
 pip install ......
 ```
-Again, please be very careful about the path to the packages in base image, path to your conda environment, python, pip, since you would want your python/pip can find packages installed in other path. 
+Again, please be very careful about the path if you create your own environment, like the path to the packages in base image, path to your conda environment, python, pip, since you would want your python/pip can find packages installed in other path. 
+
+After everything installed, exit the docker image by ```exit```. Push this docker image to the docker hub by: 
+```
+docker commit 9e22d5b18f62 xxzhou25/basenji:1.0
+docker tag xxzhou25/basenji:1.0 xxzhou25/basenji:1.0
+docker push xxzhou25/basenji:1.0
+```
+
 
