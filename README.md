@@ -124,7 +124,7 @@ python setup.py develop --no-deps --user
 cd /storage1/fs1/yeli/Active/xiaoxiao.zhou/projects/basenji/tutorials
 python ../bin/basenji_train.py models/params_small.json data/heart_l131k -o models/heart
 ```
-If you want to activate your conda environment, please pull your docker image, find the path where Conda and your conda environment is installed, and add some commands like below (in my case, my conda locates in /opt):
+If you want to activate your conda environment, please pull your docker image, find the path where Conda and your conda environment is installed, and add some commands to Dockerfile like below (in my case, my conda locates in /opt):
 ```
 export PATH=/opt/conda/bin:$PATH
 . /opt/conda/etc/profile.d/conda.sh
