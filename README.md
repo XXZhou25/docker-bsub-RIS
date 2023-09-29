@@ -43,7 +43,7 @@ docker run -itd tensorflow/tensorflow:2.8.0-gpu-jupyter /bin/bash
 docker ps (showing 'container id' of docker images that are currently running, assuming 9e22d5b18f62 is its id)
 docker exec -it 9e22d5b18f62 /bin/bash
 ```
-After ```docker exec```, we successfully enter the Docker container as a root user, typically indicated by the prompt ```root@CONTAINER_ID:/```(in this case, ```root@9e22d5b18f62:/```).  
+After ```docker exec```, we successfully enter the Docker container as a root user, typically indicated by the prompt ```root@CONTAINER_ID:/```(in this case, ```root@9e22d5b18f62:/```).  ß
 Then manually install packages required by basenji: 
 ```
 pip install cython
@@ -59,6 +59,7 @@ bash Anaconda3-2023.07-2-Linux-x86_64.sh
 source .bashrc
 ```
 **Please be very careful about the installation path of Anaconda. Avoid using "/root/Anaconda" as the path, as it may lead to issues when using this Docker image non-interactively, as you won't have permission to source "/root".**  
+  
 After everything installed, exit the docker image by ```exit```. Commit your changes and push it to your docker hub by: 
 ```
 docker commit 9e22d5b18f62 xxzhou25/basenji:1.0
