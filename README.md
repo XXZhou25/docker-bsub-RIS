@@ -58,6 +58,12 @@ wget https://repo.anaconda.com/archive/Anaconda3-2023.07-2-Linux-x86_64.sh
 bash Anaconda3-2023.07-2-Linux-x86_64.sh
 source .bashrc
 ```
+If you wish to install applications (should be able to use in command line) like bedtools, you can follow their installation instructions, bedtools as example:
+```
+apt-get install bedtools
+```
+
+
 **Please be very careful about the installation path of Anaconda. Avoid using "/root/Anaconda" as the path, as it may lead to issues when using this Docker image non-interactively, as you won't have permission to source "/root".**  
   
 After everything installed, exit the docker image by ```exit```. Commit your changes and push it to your docker hub by: 
@@ -121,6 +127,9 @@ python -c "import tensorflow as tf; print(\"Num GPUs Available: \", len(tf.confi
 
 cd /storage1/fs1/yeli/Active/xiaoxiao.zhou/projects/basenji/
 python setup.py develop --no-deps --user
+
+# test applications like bedtools
+bedtools --version 
 
 cd /storage1/fs1/yeli/Active/xiaoxiao.zhou/projects/basenji/tutorials
 python ../bin/basenji_train.py models/params_small.json data/heart_l131k -o models/heart
