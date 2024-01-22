@@ -1,3 +1,5 @@
+#https://docs.ris.wustl.edu/doc/compute/recipes/tools/ris-rstudio.html
+
 cat <<EOF > $HOME/.Rprofile
 vals <- paste('/storage1/fs1/yeli/Active/R_caches/danting/',paste(R.version$major,R.version$minor,sep="."),sep="")
 for (devlib in vals) {
