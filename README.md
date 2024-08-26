@@ -10,7 +10,7 @@ In general, there are two ways to build a custom docker image.
    - On local device, after creating your own Dockerfile, run something like:
      ```
      cd /path/to/Dockerfile  
-     docker build -f Dockerfile .
+     docker build -t your-dockerhub-username/your-image-name:tag -f Dockerfile .
      ```
      (Note: I haven't tried this locally; please refer to Docker documentation for more accurate details/commands)
    - RIS docker_build LSF(see https://docs.ris.wustl.edu/doc/compute/recipes/docker-on-compute.html?highlight=docker_build):
