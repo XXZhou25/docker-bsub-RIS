@@ -27,6 +27,18 @@ In general, there are two ways to build a custom docker image.
      Note:  
      RIS recommends building Docker images on a workstation or other computer you have local access to as it makes debugging the build process easier. However, some build processes may require more resources than you have available locally. For these situations, the compute cluster can be used.  
      See: https://docs.ris.wustl.edu/doc/compute/recipes/docker-on-compute.html#docker-on-compute
+
+## Example: Building a docker image on RIS 
+the commands will be needed: 
+
+1. connect your RIS account with your dockerhub account
+   ```
+   LSB_DOCKER_LOGIN_ONLY=1 bsub -G compute-yeli -q general-interactive -Is -a 'docker_build' -- .
+   ```
+2. build and push your docker from RIS to dockerhub
+   ```
+   bsub -G compute-yeli -q general-interactive -Is -a 'docker_build(xxzhou25/dnabert:torch-nightly-cuda12.4)' -- --tag xxzhou25/dnabert:torch-nightly-cuda12.4 .
+   ```
 ## Example: Building a docker image interactively
 This is the recommended method for ease of debugging and installing packages individually.  
   
