@@ -35,9 +35,14 @@ the commands will be needed:
    ```
    LSB_DOCKER_LOGIN_ONLY=1 bsub -G compute-yeli -q general-interactive -Is -a 'docker_build' -- .
    ```
+   then message popped up asking you to type your dockerhub user name and password
 2. build and push your docker from RIS to dockerhub
    ```
    bsub -G compute-yeli -q general-interactive -Is -a 'docker_build(xxzhou25/dnabert:torch-nightly-cuda12.4)' -- --tag xxzhou25/dnabert:torch-nightly-cuda12.4 .
+   ```
+   or
+   ```
+   bsub -G compute-yeli -q general-interactive -Is -a 'docker_build(xxzhou25/dnabert:torch-nightly-cuda12.4)' -- --tag xxzhou25/dnabert:torch-nightly-cuda12.4 -f dockerfilename .
    ```
 ## Example: Building a docker image interactively
 This is the recommended method for ease of debugging and installing packages individually.  
