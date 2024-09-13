@@ -13,7 +13,6 @@ In general, there are two ways to build a custom docker image.
      docker build -t your-dockerhub-username/your-image-name:tag -f Dockerfile .
      docker push your-dockerhub-username/your-image-name:tag
      ```
-     (Note: I haven't tried this locally; please refer to Docker documentation for more accurate details/commands)
    - RIS docker_build LSF(see https://docs.ris.wustl.edu/doc/compute/recipes/docker-on-compute.html?highlight=docker_build):
      Assuming I want to build a docker image from a Dockerfile and push it to my Docker Hub repository xxzhou25, with the name 'basenji', and version '1.0', use the following commands
      ```
