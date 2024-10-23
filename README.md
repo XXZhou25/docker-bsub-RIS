@@ -162,7 +162,7 @@ After creating the .bsub file, submitting the bsub job by
 bsub < train.bsub
 ```
 You will receive an email once the job is finished.  
-This email will specify the location where the job's output has been saved, for example:
+This email will specify the location where the job's standard output has been saved, for example:
 ```
 Output is larger than limit of 10 KB set by administrator.
 Output will be saved at /home/xiaoxiao.z/.lsbatch/1695845435.380425.out.
@@ -170,4 +170,8 @@ Output will be saved at /home/xiaoxiao.z/.lsbatch/1695845435.380425.out.
 To review the job's output, you can use the following command:
 ```
 cat /home/xiaoxiao.z/.lsbatch/1695845435.380425.out
+```
+You can also specify the standard output's location by giving ```-o``` to ```bsub```, for example: 
+```
+bsub -o /output/path/to/my/output.log < train.bsub
 ```
