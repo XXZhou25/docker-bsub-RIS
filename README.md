@@ -110,47 +110,8 @@ there are three types of GPU in the general queue:
   
 You can choose the GPU that best suits your job requirements.  
 Next, you'll need to create a Bsub job file. For example, let's name it "train.bsub"
-```
-#!/bin/bash
+#### Please refer to https://github.com/XXZhou25/docker-bsub-RIS/blob/main/job-example/train_test_predict.bsub for how to writing a bsub job file. 
 
-# JOB HEADERS HERE MEANS THE JOB...
-#BSUB -q general
-### is submitted to the general queue (-q general)
-
-#BSUB -g /xiaoxiao.z/ood-job-group
-### uses the job group /$USER/ood-job-group (-g /$USER/ood-job-group)
-
-#BSUB -R 'gpuhost' 
-#BSUB -gpu "num=1:gmodel=NVIDIAA100_SXM4_40GB"
-
-#BSUB -a 'docker(xxzhou25/tf-conda-basenji:1.0)' 
-### uses the docker image ubuntu (-a 'docker(ubuntu'))
-
-#BSUB -n 8
-### requires 1 processor (-n 1). Use -n 2 for 2 processors.
-
-#BSUB -M 64GB
-### will be killed if its memory usage exceeds 2GB (-M 2GB)
-
-#BSUB -W 3600
-### will be killed if it runs for longer than 10 minutes (-W 10)
-
-#BSUB -R 'select[mem>32GB && tmp>32GB] rusage[mem=40GB, tmp=40GB] span[hosts=1]'
-### will only run on a host with more than 2GB of RAM and 1 GB of local temp disk (-R ‘select[mem>2GB && tmp>1GB]’)
-### will consume 2GB of RAM, 1GB of local temp disk (-R ‘rusage[mem=2GB, tmp=1GB]’)
-### will span only a single host (-R ‘span[hosts=1]’)
-
-python -c "import tensorflow as tf; print(\"Num GPUs Available: \", len(tf.config.list_physical_devices('GPU')))"
-
-cd /storage1/fs1/yeli/Active/xiaoxiao.zhou/projects/basenji/
-python setup.py develop --no-deps --user
-
-# test applications like bedtools
-bedtools --version 
-
-cd /storage1/fs1/yeli/Active/xiaoxiao.zhou/projects/basenji/tutorials
-python ../bin/basenji_train.py models/params_small.json data/heart_l131k -o models/heart
-```
 If you want to activate your conda environment, please pull your docker image, find the path where Conda and your conda environment is installed, and add some commands to Dockerfile like below (in my case, my conda locates in /opt):
 ```
 export PATH=/opt/conda/bin:$PATH
