@@ -4,6 +4,8 @@
 #BSUB -q general
 ### is submitted to the general queue (-q general)
 
+#BSUB -G compute-yeli
+
 #BSUB -g /xiaoxiao.z/ood-job-group
 ### uses the job group /$USER/ood-job-group (-g /$USER/ood-job-group)
 
